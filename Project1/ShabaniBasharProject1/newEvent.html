@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Meet Street</title>
+    <link rel="stylesheet" type="text/css" href="styles/events-style.css">
+</head>
+
+<body>
+    <div class="header">
+        <header>
+            <a href="index.html"><img src="images/meet-street-logo.png" alt="Meet Street Logo" class="logo"></a>
+            <nav>
+                <ul>
+                    <li><a href="newEvent.html">New Event</a></li>
+                    <li><a href="#">Sign up</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+    <div class="gen_nav">
+        <nav>
+            <ul>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+        </nav>
+    </div>
+    <main>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <label for="event_category">Category</label>
+            <select name="event_category" id="event_category" required>
+                <option value="" disabled selected>--Select a Category--</option>
+                <option value="sports">Sports</option>
+                <option value="video_games">Video Games</option>
+                <option value="crafts">Crafts</option>
+                <option value="study">Study</option>
+                <option value="other">Other</option>
+            </select>
+            <label for="event_title">Title</label>
+            <input type="text" name="event_title" id="event_title" placeholder="title" required>
+            <label for="event_details">Details</label>
+            <input type="text" name="event_details" id="event_details" placeholder="description" required>
+            <label for="event_location">Where</label>
+            <input type="text" name="event_location" id="event_location" placeholder="location" required>
+            <label for="event_start">Start</label>
+            <input type="datetime-local" name="event_start" id="event_start" required>
+            <label for="event_end">End</label>
+            <input type="datetime-local" name="event_end" id="event_end" required>
+            <label for="event_image">Image</label>
+            <input type="file" name="event_image" id="event_image" required>
+            <input type="submit" value="Submit">
+        </form>
+    </main>
+    <footer>
+        <nav id="left_foot">
+            <ul>
+                <li><a href="#" class="info_text">©MeetStreet</a></li>
+                <li><a href="#" class="info_text">About</a></li>
+                <li><a href="#" class="info_text">Contact</a></li>
+            </ul>
+        </nav>
+        <nav id="right_foot">
+            <ul>
+                <li><a href="#"><img src="images/facebook-icon.png" alt="Facebook" class="icon_image"></a></li>
+                <li><a href="#"><img src="images/instagram-icon.png" alt="Instagram" class="icon_image"></a></li>
+            </ul>
+        </nav>
+    </footer>
+</body>
+
+</html>
