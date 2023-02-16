@@ -1,6 +1,7 @@
 //require modules
 const express = require('express');
 const morgan = require('morgan');
+const methodOverride = require('method-override');
 const storyRoutes = require('./routes/storyRoutes');
 
 //create app
@@ -15,6 +16,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
+app.use(methodOverride('_method'));
 
 //set up routes
 app.get('/', (req, res) => {

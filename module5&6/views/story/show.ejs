@@ -5,6 +5,7 @@
         <div id="story"><%= story.content%></div>
         <form>
             <button type="submit" formmethod="GET" formaction="/stories/<%= story.id%>/edit">Edit</button>
+            <button type="submit" formmethod="POST" formaction="/stories/<%= story.id%>?_method=DELETE">Delete</button>
         </form>
     </div>
     <%- include('../partials/footer.ejs')%>

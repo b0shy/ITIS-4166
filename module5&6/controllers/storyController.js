@@ -37,9 +37,21 @@ exports.edit = (req, res)=>{
 };
 
 exports.update = (req, res)=>{
-    res.send('update story with id ' + req.params.id);
+    let story = req.body;
+    let id = req.params.id;
+
+    if (model.updatebyId(id, story)){
+        res.redirect('/stories/' +id);
+    } else {
+        res.status(404).send('Cannot find story with id ' +id);
+    }
 };
 
 exports.delete = (req, res)=>{
-    res.send('delete story with id ' + req.params.id);
+    let id = req.params.id;
+    if(model.deleteById(id)){
+        res.redirect('/stories');
+    } else {
+        res.status(404).send('Cannot find story with id ' +id);
+    }
 };
