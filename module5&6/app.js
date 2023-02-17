@@ -3,6 +3,7 @@ const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
 const storyRoutes = require('./routes/storyRoutes');
+const { response } = require('express');
 
 //create app
 const app = express();
@@ -24,6 +25,24 @@ app.get('/', (req, res) => {
 });
 
 app.use('/stories', storyRoutes);
+
+app.use((req, res, next) => {
+    let err = new Error('The server cannot locate ' + req.url);
+    err.status = 404;
+    next(err);
+
+});
+
+app.use((err, req, res, next)=>{
+    console.log(err.stack);
+    if(!err.status){
+        err.status = 500;
+        err.message = ("Internal Server Error");
+    }
+
+    res.status(err.status);
+    res.render('error', {error: err});
+});
 
 //start the server
 app.listen(port, host, () => {
