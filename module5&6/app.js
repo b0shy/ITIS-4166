@@ -9,7 +9,7 @@ const { response } = require('express');
 const app = express();
 
 //configure app
-let port = 3000;
+let port = 5000;
 let host = 'localhost';
 app.set('view engine', 'ejs');
 
