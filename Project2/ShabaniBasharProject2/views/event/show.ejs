@@ -12,7 +12,7 @@
             </h2>
             <small>Posted <%= event.createdAt%> by <%= event.host%></small>
             <div id="event">
-                <img src="<%= event.imageUrl %>" alt="<%= event.title %>" class="event_image"><br>
+                <img src="/images/<%= event.image %>" alt="<%= event.title %>" class="event_image"><br>
                 Host: <%= event.host%><br>
                 Location: <%= event.location%><br>
                 Start time: <%= event.start%><br>

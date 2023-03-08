@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <form action="/" enctype="multipart/form-data" method="POST">
+        <p>Upload a picture</p>
+        <label for="image">Image</label>
+        <input type="file" id="image" name="image"><br>
+        <span>* Max allowed file size is 2MB</span>
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <br>
+    <img src="<%= typeof image !== 'undefined'? image: ''%>" style="width: 100%">
+    
+</body>
+</html>
+

@@ -8,50 +8,50 @@ const eventRoutes = require('./routes/eventRoutes');
 const app = express();
 
 //configure app
-let port = 3000;
+let port = 4200;
 let host = 'localhost';
 app.set('view engine', 'ejs');
 
 //mount middlware
 app.use(express.static('public'));
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(morgan('tiny'));
 app.use(methodOverride('_method'));
 
 //set up routes
-app.get('/', (req, res)=>{
+app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get('/about', (req, res)=>{
+app.get('/about', (req, res) => {
     res.render('about');
 });
 
-app.get('/contact', (req, res)=>{
+app.get('/contact', (req, res) => {
     res.render('contact');
 });
 
 app.use('/events', eventRoutes);
 
-app.use((req, res, next)=>{
+app.use((req, res, next) => {
     let err = new Error('The server cannot locate ' + req.url);
     err.status = 404;
     next(err);
 
 });
 
-app.use((err, req, res, next)=>{
+app.use((err, req, res, next) => {
     console.log(err.stack);
-    if(!err.status){
+    if (!err.status) {
         err.status = 500;
         err.message = ("Internal Server Error");
     }
 
     res.status(err.status);
-    res.render('error', {error: err});
+    res.render('error', { error: err });
 });
 
 //start the server
-app.listen(port, host, ()=>{
+app.listen(port, host, () => {
     console.log('Server is running on port', port);
 });

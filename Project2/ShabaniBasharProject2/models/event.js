@@ -11,7 +11,7 @@ const events = [
         end: desiredDateTime = new Date(2023, 1, 28, 18, 30).toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
         host: 'Strikers Soccer Center',
         createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_SHORT),
-        imageUrl: '/images/soccerball-image.png'
+        image: 'soccerball-image.png'
     },
     {
         id: '2',
@@ -23,7 +23,7 @@ const events = [
         end: desiredDateTime = new Date(2023, 2, 3, 11, 30).toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
         host: 'Charlotte Flag Football',
         createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_SHORT),
-        imageUrl: '/images/football-image.png'
+        image: 'football-image.png'
     },
     {
         id: '3',
@@ -35,7 +35,7 @@ const events = [
         end: desiredDateTime = new Date(2023, 2, 3, 11, 30).toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
         host: 'Lake Norman Volleyball Club',
         createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_SHORT),
-        imageUrl: '/images/volleyball-image.png'
+        image: 'volleyball-image.png'
     },
     {
         id: '4',
@@ -47,7 +47,7 @@ const events = [
         end: desiredDateTime = new Date(2023, 2, 3, 11, 30).toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
         host: 'Charlotte Gaming Club',
         createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_SHORT),
-        imageUrl: '/images/mariokart-image.png'
+        image: 'mariokart-image.png'
     },
     {
         id: '5',
@@ -59,7 +59,7 @@ const events = [
         end: desiredDateTime = new Date(2023, 2, 3, 11, 30).toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
         host: 'Charlotte Gaming Club',
         createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_SHORT),
-        imageUrl: '/images/smashbros-image.png'
+        image: 'smashbros-image.png'
     },
     {
         id: '6',
@@ -71,7 +71,7 @@ const events = [
         end: desiredDateTime = new Date(2023, 2, 3, 11, 30).toLocaleString('en-US', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }),
         host: 'Charlotte Gaming Club',
         createdAt: DateTime.now().toLocaleString(DateTime.DATETIME_SHORT),
-        imageUrl: '/images/fifa23-image.png'
+        image: 'fifa23-image.png'
     }
 ];
 
@@ -97,6 +97,7 @@ exports.updateById = function(id, newEvent){
         event.location = newEvent.location;
         event.start = DateTime.fromISO(newEvent.start).toLocaleString(DateTime.DATETIME_SHORT);
         event.end = DateTime.fromISO(newEvent.end).toLocaleString(DateTime.DATETIME_SHORT);
+        event.image = newEvent.filename;
         return true;
     } else {
         return false;
