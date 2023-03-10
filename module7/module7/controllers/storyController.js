@@ -1,8 +1,8 @@
 const model = require('../models/story');
 exports.index = (req, res, next) => {
     model.find()
-    .then(stories=>res.render('./story/index', { stories }))
-    .catch(err=>next(err));
+        .then(stories => res.render('./story/index', { stories }))
+        .catch(err => next(err));
 };
 
 exports.new = (req, res) => {
@@ -17,16 +17,18 @@ exports.create = (req, res) => {
 };
 
 exports.show = (req, res, next) => {
-    let id = req.params.id;
-    let story = model.findById(id);
-    if (story) {
-        res.render('./story/show', { story });
-    } else {
-        let err = new Error('Cannot find a story with id ' + id);
-        err.status = 404;
-        next(err);
-    }
-
+    let id = req.params.id; //String type
+    model.findById(id)
+        .then(story => {
+            if (story) {
+                res.render('./story/show', { story });
+            } else {
+                let err = new Error('Cannot find a story with id ' + id);
+                err.status = 404;
+                next(err);
+            }
+        })
+        .catch(err => next(err));
 };
 
 exports.edit = (req, res, next) => {
