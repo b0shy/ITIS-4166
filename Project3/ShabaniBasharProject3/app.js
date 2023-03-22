@@ -2,6 +2,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require('method-override');
+const mongoose = require('mongoose');
 const eventRoutes = require('./routes/eventRoutes');
 
 //create app
@@ -10,7 +11,20 @@ const app = express();
 //configure app
 let port = 4200;
 let host = 'localhost';
+let url = 'mongodb+srv://ShabaniBashar:Shabani01@cluster0.wib3tg3.mongodb.net/?retryWrites=true&w=majority';
 app.set('view engine', 'ejs');
+
+//connect to MongoDB
+mongoose.connect(url)
+    .then(() => {
+        //start the server
+        app.listen(port, host, () => {
+            console.log('MongoDB Connected…');
+            console.log('Server is running on port', port);
+
+        });
+    })
+    .catch(err => console.log(err.message));
 
 //mount middlware
 app.use(express.static('public'));
@@ -49,9 +63,4 @@ app.use((err, req, res, next) => {
 
     res.status(err.status);
     res.render('error', { error: err });
-});
-
-//start the server
-app.listen(port, host, () => {
-    console.log('Server is running on port', port);
 });
