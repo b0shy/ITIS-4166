@@ -15,7 +15,10 @@ exports.create = (req, res, next) => {
     //res.send('Created a new story');
     let story = new model(req.body); //create a new story document
     story.save() //insert the document to the database
-        .then(story => res.redirect('/stories'))
+        .then(story => {
+            console.log(story);
+            res.redirect('/stories');
+        })
         .catch(err => {
             if (err.name === 'ValidationError') {
                 err.status = 400;
@@ -111,5 +114,5 @@ exports.delete = (req, res, next) => {
                 return next(err);
             }
         })
-        .catch(err=>next(err));
+        .catch(err => next(err));
 };

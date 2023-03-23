@@ -16,14 +16,14 @@
             <label for="host">Host</label>
             <input type="text" name="host" id="host" value="<%= event.host%>" placeholder="host" required>
             <label for="content">Details</label>
-            <input type="text" name="content" id="content" value="<%= event.content%>" placeholder="description" required>
+            <input type="text" name="content" id="content" value="<%= event.content%>" placeholder="description" required minlength="10">
             <label for="location">Location</label>
             <input type="text" name="location" id="location" value="<%= event.location%>" placeholder="location" required>
             <label for="start">Start</label>
             <input type="datetime-local" name="start" id="start" value="<%= event.start%>" required>
             <label for="end">End</label>
             <input type="datetime-local" name="end" id="end" value="<%= event.end%>" required>
-            <label for="image">Image<br>**Max Allowed File Size is 4MB</label>
+            <label for="image">Image<br>**Max Allowed File Size is 10MB</label>
             <input type="file" id="image" name="image" value="<%= event.image%>" required>
             <input type="submit" value="Submit">
         </form>
