@@ -5,17 +5,17 @@
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #D7CEC7;
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #D7CEC7;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
 
-  }
+}
 
-  h3, h4, p {
-    margin-bottom: 1rem;
-  }
+h3, h4, p {
+  margin-bottom: 1rem;
+}
 
 nav {
   padding: 1rem;
@@ -31,41 +31,41 @@ nav {
   gap: 1rem;
 }
 
-nav h2{
+nav h2 {
   align-self: end;
 }
 
-nav a{
+nav a {
   text-decoration: none;
   color: white;
   font-size: 1.2rem;
- 
- }
+
+}
 
 .content {
-    padding-left: 1rem;
-    padding-top: 1rem;
-  }
+  padding-left: 1rem;
+  padding-top: 1rem;
+}
 
-.content a{
+.content a {
   text-decoration: none;
   color: grey;
 }
 
 footer {
-    color: white;
-    background-color: rgb(0, 66, 30);
-    text-align: center;
-    padding: 1rem;
+  color: white;
+  background-color: rgb(0, 66, 30);
+  text-align: center;
+  padding: 1rem;
 }
 
-#story{
- width: 50%;
- margin: 1rem 0;
+#story {
+  width: 50%;
+  margin: 1rem 0;
 }
 
 
-input, textarea, button{
+input, textarea, button {
   font: inherit;
 }
 
@@ -85,7 +85,7 @@ input, textarea, button{
 
 button {
   width: 60px;
-  padding:  0.1em 0;
+  padding: 0.1em 0;
 }
 
 .user-form {

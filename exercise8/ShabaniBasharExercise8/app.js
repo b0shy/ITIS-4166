@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const flash = require('connect-flash');
 const storyRoutes = require('./routes/storyRoutes');
 const User = require('./models/user');
 
@@ -40,8 +41,12 @@ app.use(session({
     store: new MongoStore({ mongoUrl: 'mongodb://0.0.0.0:27017/demos' })
 }));
 
+app.use(flash());
+
 app.use((req, res, next) => {
     console.log(req.session);
+    res.locals.successMessages = req.flash('success');
+    res.locals.errorMessages = req.flash('error');
     next();
 });
 
@@ -60,7 +65,19 @@ app.post('/', (req, res, next) => {
     let user = new User(req.body);
     user.save()
         .then(() => res.redirect('/users/login'))
-        .catch(err => next(err));
+        .catch(err => {
+            if(err.name === 'ValidationError'){
+                req.flash('error', err.message);
+                return res.redirect('/users/new');
+            }
+
+            if(err.code === 11000){
+                req.flash('error', 'Email address has been used');
+                return res.redirect('/users/new');
+            }
+            
+            next(err)
+        });
 });
 
 //get the login form
@@ -83,14 +100,17 @@ app.post('/users/login', (req, res, next) => {
                     .then(result => {
                         if (result) {
                             req.session.user = user._id; //store users id in the session
+                            req.flash('success', 'You have successfully logged in');
                             res.redirect('/users/profile');
                         } else {
-                            console.log('wrong password');
+                            //console.log('wrong password');
+                            req.flash('error', 'Wrong password entered!')
                             res.redirect('/users/login');
                         }
                     })
             } else {
-                console.log('wrong email address');
+                //console.log('wrong email address');
+                req.flash('error', 'Wrong email entered!')
                 res.redirect('/users/login');
             }
         })
