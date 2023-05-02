@@ -237,3 +237,41 @@ tr:nth-child(even) {
     text-decoration: none;
     color: black;
 }
+
+#rsvp-section {
+    display: flex;
+}
+
+.rsvp-button {
+    height: 30px;
+    width: 70px;
+    margin-right: 10px;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.rsvp-button[value=YES] {
+    background-color: #3CB371;
+    /* green */
+}
+
+.rsvp-button[value=NO] {
+    background-color: #FF5733;
+    /* red */
+}
+
+.rsvp-button[value=MAYBE] {
+    background-color: #3498DB;
+    /* blue */
+}
+
+.rsvp-form {
+    margin-left: -1px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: row;
+}

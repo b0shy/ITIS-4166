@@ -15,6 +15,14 @@
                         </form>
                     <%}%>
             </h2>
+            <div id="rsvp-section">
+                Going?
+                <form method="POST" action="/events/<%= event.id %>/rsvp" class="rsvp-form">
+                    <button type="submit" name="status" value="YES" class="rsvp-button">Yes</button>
+                    <button type="submit" name="status" value="NO" class="rsvp-button">No</button>
+                    <button type="submit" name="status" value="MAYBE" class="rsvp-button">Maybe</button>
+                </form>
+            </div>
             <small>Posted <%= event.createdAt%> by <%= event.host.firstName + ' ' + event.host.lastName%></small>
             <div id="event">
                 <img src="/images/<%= event.image %>" alt="<%= event.title %>" class="event_image"><br>
@@ -23,6 +31,7 @@
                         Start time: <%= event.start%><br>
                             End time: <%= event.end%><br>
                                 Details: <%= event.content%><br>
+                                    Number of RSVPs: 0<!--  event.rsvps.filter(rsvp => rsvp.status === 'YES').length -->
             </div>
         </main>
     </div>

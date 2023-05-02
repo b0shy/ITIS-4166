@@ -2,7 +2,8 @@
     <div class="content">
         <main>
             <div class="welcome-message">
-                <h2><%=user.firstName%>'s Events
+                <h2>
+                    <%=user.firstName%>'s Events
                 </h2>
             </div>
             <%console.log(typeof events)%>
@@ -34,7 +35,36 @@
                     </div>
                     <%} else {%>
                         <p>You have not created any events</p>
-                        <%}%>
+                        <%}%><br><br>
+                            <div class="welcome-message">
+                                <h2>
+                                    <%=user.firstName%>'s RSVPs
+                                </h2>
+                            </div>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Title</th>
+                                            <th>Going?</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% events.forEach(event=> { %>
+                                            <tr>
+                                                <td><a href="/events/<%= event.id%>">
+                                                        
+                                                    </a></td>
+                                                <td class="actions">
+                                                    <a href="/events/<%= event.id%>" title="Yes"></a>
+                                                    <a href="/events/<%= event.id%>" title="No"></a>
+                                                    <a href="/events/<%= event.id%>" title="Maybe"></a>
+                                                </td>
+                                            </tr>
+                                            <% }); %>
+                                    </tbody>
+                                </table>
+                            </div>
         </main>
     </div>
     <%- include('../partials/footer.ejs')%>
