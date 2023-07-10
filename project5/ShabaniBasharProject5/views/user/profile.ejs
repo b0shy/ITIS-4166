@@ -23,10 +23,18 @@
                                                 <%= event.title%>
                                             </a></td>
                                         <td class="actions">
-                                            <a href="/events/<%= event.id%>/edit" title="Edit"><img
-                                                    src="/images/edit-button.png" alt="Edit" class="button"></a>
-                                            <a href="/events/<%= event.id%>?_method=DELETE" title="Delete"><img
-                                                    src="/images/delete-button.png" alt="Delete" class="button"></a>
+                                            <form action="/events/<%= event.id %>/edit" method="GET">
+                                                <button type="submit">
+                                                    <img src="/images/edit-button.png" alt="Edit" class="button">
+                                                </button>
+                                            </form>
+                                            <form action="/events/<%= event.id%>?_method=DELETE" method="POST">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="image" src="/images/delete-button.png" alt="Delete"
+                                                    class="button">
+                                            </form>
+
+
                                         </td>
                                     </tr>
                                     <% }); %>
@@ -53,7 +61,7 @@
                                         <% events.forEach(event=> { %>
                                             <tr>
                                                 <td><a href="/events/<%= event.id%>">
-                                                        
+
                                                     </a></td>
                                                 <td class="actions">
                                                     <a href="/events/<%= event.id%>" title="Yes"></a>
