@@ -8,7 +8,7 @@ const eventRoutes = require('./routes/eventRoutes');
 const app = express();
 
 //configure app
-let port = 5200;
+let port = 3000;
 let host = 'localhost';
 app.set('view engine', 'ejs');
 
